@@ -1,0 +1,16 @@
+spin_version = "1"
+authors = ["Jason Washburn <jason.washburn@gmail.com>"]
+description = "Social media app for code snippets"
+name = "code-things"
+trigger = { type = "http", base = "/" }
+version = "0.1.0"
+
+[[component]]
+id = "profile-api"
+source = "api/profile/target/wasm32-wasi/release/profile_api.wasm"
+allowed_http_hosts = []
+[component.trigger]
+route = "/api/profile/..."
+[component.build]
+command = "cargo build --target wasm32-wasi --release"
+workdir = "api/profile"
